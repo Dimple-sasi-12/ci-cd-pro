@@ -1,7 +1,8 @@
 def COLOR_MAP = [
-    'SUCCESS': 'good',
+<F6>    'SUCCESS': 'good',
     'FAILURE': 'danger'
     ]
+
 pipeline {
     agent any
     tools {
@@ -13,7 +14,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-             git 'https://github.com/Sushmaa123/Java-Springboot.git'
+             git 'https://github.com/Dimple-sasi-12/CI-CD.git'
             }
         }
          stage('compile') {
@@ -38,28 +39,28 @@ pipeline {
          stage('docker build') {
             steps {
              script {
-                 withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                
                     sh 'docker build -t java-spring .'
-                  }
+                  
               }
             }
         }
          stage('docker push') {
             steps {
              script {
-                withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                    sh 'docker tag java-spring sushmagowda321/java-spring'
-                    sh 'docker push sushmagowda321/java-spring'
-                  }
+                
+                    sh 'docker tag java-spring bunny2003/java-spring'
+                    sh 'docker push bunny2003/java-spring'
+                  
               }
             }
          }    
         stage('docker container') {
             steps {
-             script {
-                   withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+	     script {
+         
                     sh 'docker run -itd --name ci-cd-container -p 8085:8081 java-spring'
-                  }
+                  
               }
             }
         }    
