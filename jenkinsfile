@@ -59,7 +59,7 @@ pipeline {
             steps {
 	     script {
          
-                    sh 'docker run -itd --name ci-cd-container -p 8085:8081 java-spring'
+                    sh 'docker run -itd --name ci-cd-container -p 8087:8081 java-spring'
                   
               }
             }
