@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-             git 'https://github.com/Dimple-sasi-12/project.git'
+             git 'https://github.com/Dimple-sasi-12/ci-cd-pro.git'
             }
         }
          stage('compile') {
